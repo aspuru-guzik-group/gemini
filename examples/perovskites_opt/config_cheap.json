@@ -1,0 +1,16 @@
+{
+	"general": {
+		"auto_desc_gen": "False",
+		"parallel":      "False",
+		"boosted":       "False",
+		"sampling_strategies": 2
+	},
+	"parameters": [
+			{"name": "organic", "type": "categorical", "size": 1, "category_details": "CatDetails/cat_details_organic.pkl"},
+			{"name": "cation",  "type": "categorical", "size": 1, "category_details": "CatDetails/cat_details_cation.pkl"},
+			{"name": "anion",   "type": "categorical", "size": 1, "category_details": "CatDetails/cat_details_anion.pkl"}
+	],
+	"objectives": [
+			{"name": "bandgap", "goal": "min"}
+		]
+}

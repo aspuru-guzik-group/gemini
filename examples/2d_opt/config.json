@@ -1,0 +1,15 @@
+{
+	"general": {
+		"auto_desc_gen": "False",
+		"parallel":      "False",
+		"boosted":       "True",
+		"sampling_strategies": 2
+	},
+	"parameters": [
+			{"name": "param_0", "type": "continuous", "low": -3.0, "high": 3.0, "size": 1},
+			{"name": "param_1", "type": "continuous", "low": -3.0, "high": 3.0, "size": 1}
+	],
+	"objectives": [
+			{"name": "obj", "goal": "min"}
+		]
+}

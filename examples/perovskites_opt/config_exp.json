@@ -1,0 +1,19 @@
+{
+	"general": {
+		"auto_desc_gen": "False",
+		"parallel":      "False",
+		"boosted":       "True",
+		"predictive_model": "gemini",
+		"predictive_trans": "identity",
+		"sampling_strategies": 2
+	},
+	"parameters": [
+			{"name": "organic", "type": "categorical", "size": 1, "category_details": "CatDetails/cat_details_organic.pkl"},
+			{"name": "cation",  "type": "categorical", "size": 1, "category_details": "CatDetails/cat_details_cation.pkl"},
+			{"name": "anion",   "type": "categorical", "size": 1, "category_details": "CatDetails/cat_details_anion.pkl"},
+			{"name": "temperature", "type": "continuous", "size": 1, "high": 70, "low": 20}
+	],
+	"objectives": [
+			{"name": "bandgap", "goal": "min"}
+		]
+}

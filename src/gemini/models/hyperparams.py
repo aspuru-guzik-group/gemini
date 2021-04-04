@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+#===============================================================================
+
+OPT_HPARAMS =   {'device': 'cpu',
+				 'scaling_type': 'sep',
+				 'feature_scaling': 'same',
+				 'target_scaling': 'same',
+				 'max_epochs': 25000,
+				 'batch_size': 100,
+				 'learning_rate': 0.0002722222222222222,
+				 'act_fbias': 'softplus',
+				 'act_fbias_out': 'linear',
+				 'act_latent': 'leaky_relu',
+				 'act_latent_out': 'linear',
+				 'act_tbias': 'softplus',
+                 'act_tbias_out': 'linear',
+				 'hidden_tbias': 3,
+				 'hidden_fbias': 1,
+				 'depth_fbias': 1,
+				 'depth_tbias': 1,
+				 'depth_latent': 3,
+				 'hidden_latent': 96,
+				 'coeff_both': 0.5,
+				 'reg_latent': 0.001,
+				 'reg_bias': 0.08944444444444445,
+				 'skip_es': 0,
+				 'es_patience': 20,
+				 'train_metrics': ['r2', 'rmse'],
+				 'valid_metrics': ['r2', 'rmse']}
