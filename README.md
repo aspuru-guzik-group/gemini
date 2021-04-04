@@ -10,13 +10,13 @@ the design and discovery of functional molecules and advanced materials. (https:
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Gemini.
+<!-- Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Gemini.
 
 ```bash
 pip install matter-gemini
-```
+``` -->
 
-Alternatively, you can install it from source.
+Install Gemini from source,
 
 ```bash
 git clone https://github.com/rileyhickman/gemini.git
@@ -133,10 +133,10 @@ model entries)
 We provide methods for facile multi-fidelity data preprocessing/testing for 4 datasets reported in
 the literature.
 
-* `dataset_perovskites`
+* `dataset_perovskites` (10.1038/sdata.2017.57)
 * `dataset_freesolv` (10.1007/s10822-014-9747-x)
-* `dataset_photobleaching`
-* `dataset_cat_oer_1_4`
+* `dataset_photobleaching` (10.1002/adma.201907801)
+* `dataset_cat_oer_1_4` (10.1039/C9SC05999G)
 
 ## Contributing
 
