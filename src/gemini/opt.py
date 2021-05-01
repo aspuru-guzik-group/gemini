@@ -24,7 +24,8 @@ class GeminiOpt(Base, Logger):
         Logger.__init__(self, 'GeminiOpt', verbosity=0)
         self.is_opt = True
         self.is_internal = False
-
+        self.name = 'gemini'
+        
     def estimate_pearson_coeff(self,
                               features,
                               targets):
