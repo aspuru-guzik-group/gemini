@@ -25,20 +25,24 @@ class GeminiOpt(Base, Logger):
         self.is_opt = True
         self.is_internal = False
         self.name = 'gemini'
-        
+
     def estimate_pearson_coeff(self,
                               features,
                               targets):
         ''' estimate pearsons coefficient
         '''
-        if not self.cv_models:
-            self.load_full_model()
-            mean_pred, _ = self.predict(features)
-        else:
-            self.load_cv_models()
-            mean_pred, _ = self.predict_cv(features)
+        if targets.shape[0] <= 2:
+            self.pearson_coeff=1.0
 
-        self.pearson_coeff = Metrics.pearson(targets, mean_pred)
+        elif targets.shape[0] > 2:
+            if not self.cv_models:
+                self.load_full_model()
+                mean_pred, _ = self.predict(features)
+            else:
+                self.load_cv_models()
+                mean_pred, _ = self.predict_cv(features)
+            self.pearson_coeff = Metrics.pearson(targets, mean_pred)
+
         self.log(f'Pearson coefficient computed : rho={round(self.pearson_coeff, 2)}', 'INFO')
 
 

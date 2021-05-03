@@ -72,7 +72,7 @@ class DataTransformer(object):
 		elif scaling == 'same':
 			scaled_input = input
 		elif scaling == 'normalization':
-			scaled_input =  (input - self.stats_dict[f'min_{evaluator}_{type}']) / (self.stats_dict[f'max_{evaluator}_{type}'] - self.stats_dict[f'min_{evaluator}_features'])
+			scaled_input =  (input - self.stats_dict[f'min_{evaluator}_{type}']) / (self.stats_dict[f'max_{evaluator}_{type}'] - self.stats_dict[f'min_{evaluator}_{type}'])
 
 		return scaled_input
 

@@ -350,7 +350,12 @@ class Gemini(NetworkModel):
 					return train_slow_errors[-1], {}, parsed_vars
 
 
-	def run_prediction(self, features, evaluator='slow', scaled=False):
+	def run_prediction(self,
+					  features,
+					  evaluator='slow',
+					  scaled=False,
+					  return_unscaled=False
+			):
 		''' predictions with Gemini
 		'''
 		if not scaled:
@@ -383,6 +388,9 @@ class Gemini(NetworkModel):
 			pred_mu[start:stop] = predic_mu[:size]
 			pred_std[start:stop] = predic_std[:size]
 
-		pred_mu_raw = self.get_raw(pred_mu, 'targets', self.target_scaling, evaluator)
+		if not return_unscaled:
+			pred_mu_raw = self.get_raw(pred_mu, 'targets', self.target_scaling, evaluator)
+		else:
+			pred_mu_raw = pred_mu
 
 		return pred_mu_raw, pred_std

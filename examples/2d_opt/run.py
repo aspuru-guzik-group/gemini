@@ -153,7 +153,10 @@ while len(observations_exp) < BUDGET_EXP:
 			for element in features:
 				num, inv_den = kernel(element)
 				element = element.reshape(1, len(element))
-				g, _ = gemini.predict(element)
+				g, _ = gemini.predict(element,
+									  scaled=False,
+									  return_unscaled=True,
+								)
 				vals_0g.append((num + gryffin.acquisition.sampling_param_values[0] + inv_vol*gemini.get_pearson_coeff()* g) * (inv_den / (inv_vol * inv_den + 1)))
 				vals_1g.append((num + gryffin.acquisition.sampling_param_values[1] + inv_vol*gemini.get_pearson_coeff()* g) * (inv_den / (inv_vol * inv_den + 1)))
 			vals_0g = np.squeeze(np.array(vals_0g))

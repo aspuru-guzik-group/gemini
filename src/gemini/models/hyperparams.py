@@ -5,7 +5,7 @@
 OPT_HPARAMS =   {'device': 'cpu',
 				 'scaling_type': 'sep',
 				 'feature_scaling': 'same',
-				 'target_scaling': 'same',
+				 'target_scaling': 'normalization',
 				 'max_epochs': 25000,
 				 'batch_size': 100,
 				 'learning_rate': 0.0002722222222222222,

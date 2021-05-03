@@ -240,23 +240,23 @@ class Base(DataTransformer, Logger):
 	def update_hyperparams(self, updated_hyperparams):
 		return None
 
-	def predict_cv(self, features, evaluator='slow', scaled=False):
+	def predict_cv(self, features, evaluator='slow', scaled=False, return_unscaled=False):
 		''' Returns the mean prediction over several cross-validation folds
 		'''
 		preds = []
 		stds  = []
 		for model in self.cv_models:
-			mean_pred, std_pred = model.run_prediction(features, evaluator, scaled)
+			mean_pred, std_pred = model.run_prediction(features, evaluator, scaled, return_unscaled)
 			preds.append(mean_pred)
 			stds.append(std_pred)
 		return np.mean(np.array(preds), axis=0), np.mean(np.array(std_pred), axis=0)
 
-	def predict(self, features, evaluator='slow', scaled=False):
+	def predict(self, features, evaluator='slow', scaled=False, return_unscaled=False):
 		''' Returns the prediction of the full model trained on all of the data
 		'''
 		if not hasattr(self, 'full_model'):
 			self.load_full_model()
-		mean_pred, std_pred = self.full_model.run_prediction(features, evaluator, scaled)
+		mean_pred, std_pred = self.full_model.run_prediction(features, evaluator, scaled, return_unscaled)
 		return mean_pred, std_pred
 
 

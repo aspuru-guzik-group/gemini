@@ -1,7 +1,7 @@
 {
 	"general": {
 		"auto_desc_gen": "False",
-		"parallel":      "False",
+		"parallel":      "True",
 		"boosted":       "True",
 		"sampling_strategies": 2
 	},
