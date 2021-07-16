@@ -36,6 +36,14 @@ if __name__ == '__main__':
 	evaluator_exp   = Evaluator(log_name = LOG_NAME_EXP, type = 'slow')
 	evaluator_cheap = Evaluator(log_name = LOG_NAME_CHEAP, type = 'fast')
 
+	cheap_options = evaluator_cheap.generate_dataset()
+
+	samples, cheap_options = evaluator_cheap.select_random(cheap_options, 10)
+
+	print(samples)
+	print(len(cheap_options))
+	quit()
+
 	# instantiate gryffin
 	gryffin   = Gryffin(config_file = CONFIG_FILE_EXP)
 
@@ -72,12 +80,13 @@ if __name__ == '__main__':
 		print('@@\tCHEAP EXPERIMENT\n')
 
 		# random sampling on the cheap surface
-
-
 		if num_eval_cheap <= BUDGET_CHEAP-(gryffin.config.get('sampling_strategies')*RATIO):
 			samples_cheap = []
 			for i in range(RATIO):
-				sample_cheap = gryffin_cheap.recommend(observations = [observations_exp, observations_cheap])
+				# sample randomly from cheap surface ...
+				sample_cheap = gryffin_cheap.recommend(
+					observations = [observations_exp, observations_cheap]
+				)
 				samples_cheap.extend(sample_cheap)
 
 			# get measurements on the cheap points

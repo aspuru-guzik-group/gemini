@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import pickle
+import itertools
+import random
 import numpy as np
 
 #==================================================================
@@ -78,31 +80,32 @@ class Evaluator(object):
 
 
 
-	def generate_dataset():
-		''' generate all the
+	def generate_dataset(self):
+		''' generate all the potenital combinations
 		'''
-		return None
+		idxs = [
+			[c['name'] for c in self.cations],
+			[a['name'] for a in self.anions],
+			[o['name'] for o in self.organics],
+		]
+		return list(itertools.product(*idxs))
 
+
+	def select_random(self, options, num_samples):
+		''' select randomly num samples perovskites and remove then from
+		options
+		'''
+		samples = []
+		samples = random.sample(options, num_samples)
+		for sample in samples:
+			options.remove(sample)
+		return samples, options
 
 
 	def __call__(self, vector):
 
 		print('VECTOR (%d)\t' % self.counter, vector)
 
-		# parse vector
-#		try:
-#			organic_index = int(np.squeeze(vector['organic']))
-#			anion_index   = int(np.squeeze(vector['anion']))
-#			cation_index  = int(np.squeeze(vector['cation']))
-#		except TypeError:
-#			organic_index = vector[0]
-#			anion_index   = vector[1]
-#			cation_index  = vector[2]
-#		except IndexError:
-#			organic_index = int(vector[0, 0])
-#			anion_index   = int(vector[0, 1])
-#			cation_index  = int(vector[0, 2])
-#			print('...', organic_index, anion_index, cation_index)
 
 		organic_name = vector['organic'][0].capitalize()
 		organic_name_lower = vector['organic'][0]

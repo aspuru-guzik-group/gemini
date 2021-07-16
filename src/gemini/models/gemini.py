@@ -33,7 +33,7 @@ class Gemini(NetworkModel):
 		self.register_hyperparams(user_hyperparams)
 		self.check_device()
 
-		self.train_metrics, self.valid_metrics = ['r2', 'rmse'], ['r2', 'rmse']
+		self.train_metrics, self.valid_metrics = ['r2', 'rmse'], ['r2','rmse']
 
 
 	def build_graph(self):
